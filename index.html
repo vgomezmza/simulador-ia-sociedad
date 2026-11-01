@@ -82,6 +82,14 @@
         [data-fold].folded .wide-btn { display: none; }
         .range-btn { background: #0f172a; border-color: #334155; color: #94a3b8; }
         .range-btn.on { background: rgba(8,145,178,.25); border-color: #22d3ee; color: #cffafe; }
+        .ctl-group-title { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: #94a3b8;
+            padding-bottom: 6px; margin-bottom: 10px; border-bottom: 1px solid rgba(148,163,184,.15); }
+        .ctl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+        .ctl { display: grid; grid-template-rows: minmax(2.6em, auto) auto auto 1fr; row-gap: 6px; padding: 10px 12px; border-radius: 10px;
+            background: rgba(15,23,42,.55); border: 1px solid rgba(148,163,184,.10); min-width: 0; }
+        .ctl-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .ctl .vu { margin-top: 0; }
+        .ctl .affects { align-self: end; }
         .affects { color: #64748b; font-size: 10px; line-height: 1.35; }
         .affects b { color: #94a3b8; font-weight: 600; }
     </style>
@@ -148,11 +156,11 @@
             <h2 class="text-base font-bold text-slate-200 border-b border-slate-700 pb-2 flex items-center gap-2">
                 <i class="fa-solid fa-sliders text-cyan-400"></i> Escenario tecnológico y políticas de Estado
             </h2>
-            <div id="controls" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-5 text-xs"></div>
+            <div id="controls" class="flex flex-col gap-5 text-xs"></div>
         </div>
         <div class="glass-panel p-5 rounded-2xl space-y-4 lg:col-span-3" data-fold="ia-controles">
             <h2 class="text-base font-bold text-slate-200 border-b border-slate-700 pb-2 flex items-center gap-2"><i class="fa-solid fa-sliders text-purple-400"></i> Escenario de escalado y políticas de energía, agua y centros de datos</h2>
-            <div id="resControls" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-5 text-xs"></div>
+            <div id="resControls" class="flex flex-col gap-5 text-xs"></div>
         </div>
         <div class="glass-panel p-5 rounded-2xl flex flex-col gap-3 lg:col-start-4 lg:row-start-1 lg:row-span-2 lg:self-start" data-fold="escenarios">
             <h2 class="text-base font-bold text-slate-200 border-b border-slate-700 pb-2 flex items-center gap-2">
@@ -1092,7 +1100,7 @@ $$\text{Capex}=(\Delta GW_{nuevos}+0{,}1\,P_t)\times38$$
 
 <footer class="max-w-7xl mx-auto w-full mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="space-y-1 text-center md:text-left">
-        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v6 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
+        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v6.1 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
         <p class="text-[11px]">Autor: <span class="text-cyan-400 font-medium">Victor Javier Gómez Saá</span> |
             <a href="mailto:vgomez40@mercurycad.com.ar" class="text-cyan-400 hover:underline">vgomez40@mercurycad.com.ar</a> |
             <a href="https://mercurycad.com.ar" class="text-cyan-400 hover:underline">mercurycad.com.ar</a></p>
@@ -1215,7 +1223,7 @@ const CONTROLS = [
         { id: 'ubi', label: 'Ingreso básico universal', min: 0, max: 100, step: 5, def: 0, fmt: v => v + ' % de la línea', help: 'Monto por persona como % de la línea de pobreza local. Adicional a lo vigente. Ver su costo.', vu: { z: [[10, 'Complemento', '#22c55e'], [30, 'Significativo', '#eab308'], [60, 'Costo fiscal alto', '#f97316'], [100, 'Cubre toda la línea', '#ef4444']] } },
         { id: 'robotTax', label: 'Impuesto a la automatización', min: 0, max: 30, step: 5, def: 0, fmt: v => v + ' %', help: 'Impuesto sobre la renta que generan los robots. Frena algo su incorporación y recauda para financiar las políticas.',
           vu: { z: [[0, 'Sin impuesto', '#94a3b8'], [10, 'Moderado', '#22c55e'], [20, 'Alto', '#eab308'], [30, 'Muy alto', '#f97316']] } },
-        { id: 'finTax', label: 'Financiamiento del gasto nuevo con impuestos', min: 0, max: 100, step: 10, def: 50, fmt: v => v + ' % impuestos', help: 'Qué parte del déficit de las políticas nuevas se cubre con impuestos (resta ingreso a los hogares y algo de crecimiento) y qué parte con deuda (se acumula y paga intereses del 3 % real, que también se cubren con impuestos).',
+        { id: 'finTax', label: 'Financiar con impuestos', min: 0, max: 100, step: 10, def: 50, fmt: v => v + ' %', help: 'Qué parte del déficit de las políticas nuevas se cubre con impuestos (resta ingreso a los hogares y algo de crecimiento) y qué parte con deuda (se acumula y paga intereses del 3 % real, que también se cubren con impuestos).',
           vu: { z: [[20, 'Mayormente deuda', '#f97316'], [60, 'Mixto', '#eab308'], [100, 'Mayormente impuestos', '#22c55e']] } },
         { id: 'childb', label: 'Asignación por hijo ampliada', min: 0, max: 100, step: 5, def: 0, fmt: v => v + ' % de la línea', help: 'Transferencia por menor de 18. Más barata que el IBU por punto de pobreza infantil reducido.', vu: { z: [[20, 'Refuerzo leve', '#22c55e'], [50, 'Refuerzo fuerte', '#eab308'], [80, 'Muy amplio', '#f97316'], [100, 'Cubre toda la línea', '#ef4444']] } },
     ]},
@@ -1779,25 +1787,26 @@ function updateVU(c) {
 }
 
 function controlMarkup(c) {
-    return `<div class="space-y-1">
-        <div class="flex justify-between items-center font-medium gap-2">
-            <span class="flex items-center gap-1.5">
-                <label for="${c.id}" class="text-slate-300">${c.label}</label>
+    return `<div class="ctl">
+        <div class="ctl-head">
+            <span class="flex items-start gap-1.5 min-w-0">
+                <label for="${c.id}" class="text-slate-300 font-medium leading-snug">${c.label}</label>
                 <button class="info-btn" data-ex="${c.id}" data-tip="${c.help.replace(/"/g, '&quot;')}" aria-label="Explicación: ${c.label}">i</button>
             </span>
-            <span id="${c.id}Val" class="text-cyan-400 font-mono shrink-0"></span>
+            <span id="${c.id}Val" class="text-cyan-400 font-mono shrink-0 text-right leading-snug"></span>
         </div>
         <input type="range" id="${c.id}" min="${c.min}" max="${c.max}" step="${c.step}" value="${state[c.id]}" data-tip="${c.help.replace(/"/g, '&quot;')}" aria-describedby="${c.id}Zone">
         ${vuMarkup(c)}
         ${AFFECTS[c.id] ? `<div class="affects"><b>Mueve:</b> ${AFFECTS[c.id]}</div>` : ''}
     </div>`;
 }
+// Cada grupo: título de lado a lado y sus controles en una grilla pareja (las filas quedan alineadas)
 function renderGroups(boxId, groups, accent) {
     document.getElementById(boxId).innerHTML = groups.map(g => `
-        <div class="space-y-4">
-            <h3 class="text-[11px] uppercase tracking-wide font-semibold text-slate-400"><i class="fa-solid ${g.icon} mr-1 ${accent}"></i>${g.group}</h3>
-            ${g.items.map(controlMarkup).join('')}
-        </div>`).join('');
+        <section class="ctl-group">
+            <h3 class="ctl-group-title"><i class="fa-solid ${g.icon} mr-1 ${accent}"></i>${g.group}</h3>
+            <div class="ctl-grid">${g.items.map(controlMarkup).join('')}</div>
+        </section>`).join('');
 }
 
 function buildControls() {
