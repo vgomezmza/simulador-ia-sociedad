@@ -26,6 +26,13 @@ Cada valor del simulador indica su fuente al pasar el mouse en la tabla **Calibr
 - [Eurostat, desempleo julio 2026](https://www.ansa.it/amp/europa/en/news/2026/09/01/eurostat-unemployment-rate-stable-in-the-euro-area-at-6.4_c419e9af-1f98-4d57-927d-2c41e034b872.html)
 - [Eurostat, AROPE 2025](https://www.hellenicshippingnews.com/?p=1134212)
 
+## Robótica
+
+- [IFR: densidad de robots 2024 (UE 231, México 62, Corea 1.220, promedio mundial 132)](https://ifr.org/ifr-press-releases/news/robot-density-surges-in-europe-asia-and-americas)
+- [IFR vía Mercado: Argentina, 25 robots por cada 10.000 empleados industriales](https://mercado.com.ar/tecnologia/robotica-industrial-doing-describe-la-brecha-de-automatizacion-y-los-desafios-en-argentina)
+- [Idelas-UCES vía La Gaceta: 2,37 M de ocupados en la industria argentina](https://www.lagaceta.com.ar/nota/958734/economia/como-se-distribuye-empleo.html)
+- [Statista / Eurostat: más de 30 M de ocupados en la industria de la UE](https://statista.com/statistics/1195197/employment-by-sector-in-europe)
+
 ## Proyecciones demográficas usadas para validar
 
 - [INE: Madrid 8,20 M en 2041 (El Debate)](https://www.eldebate.com/espana/madrid/20260617/ine-estima-comunidad-madrid-superara-82-millones-habitantes-15-anos_429692.html)

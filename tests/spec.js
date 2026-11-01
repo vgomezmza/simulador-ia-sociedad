@@ -23,7 +23,7 @@ const EXP=[ // [control, salida, signo esperado, año, filtro territorio]
  ['ubi','P0',-1,2040],['ubi','gini',-1,2040],['ubi','cost',+1,2040],['childb','Pc',-1,2040],['retrain','u',-1,2040],
  ['formal','inf',-1,2040,T=>T.inf],['formal','P0',-1,2040,T=>T.inf],['hours','u',-1,2040],['natal','tgf',+1,2045],['natal','pop',+1,2050],
  ['mig','pop',0,2050],['housing','P0',-1,2040],['edu','P0',-1,2050],['health','tmi',-1,2040],['tele','pop',-1,2050,T=>T.metro],
- ['effHw','A',+1,2035],['subst','ls',-1,2050],['subst','wage',-1,2050],['subst','pop',-1,2050],['subst','wageDisp',-1,2050],['grid','A',+1,2035],['satYear','A',+1,2040],['tax','gini',-1,2045],['childb','tmi',-1,2040],['ubi','tmi',-1,2040],
+ ['effHw','A',+1,2035],['subst','ls',-1,2050],['subst','wage',-1,2050],['subst','pop',-1,2050],['subst','wageDisp',-1,2050],['robot','robDensity',+1,2040],['robot','dispCumR',+1,2040],['robot','ls',-1,2050],['robotTax','robDensity',-1,2040],['robotTax','revenue',+1,2040],['grid','A',+1,2035],['satYear','A',+1,2040],['tax','gini',-1,2045],['childb','tmi',-1,2040],['ubi','tmi',-1,2040],
 ];
 const ALLC=[...M.CONTROLS,...M.RES_CONTROLS].flatMap(g=>g.items);
 const R0=run(BASE);

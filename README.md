@@ -1,6 +1,6 @@
 # Simulador de IA y Políticas Sociales 2026–2050
 
-Tablero interactivo que proyecta, año por año desde los datos oficiales de 2026 hasta 2050, cómo la adopción de inteligencia artificial y las políticas de Estado afectan el empleo, el valor del trabajo humano, la pobreza (sobre todo la infantil), la desigualdad, la población, el bienestar y la tensión social. Incluye además el crecimiento de la IA y los recursos que consume: electricidad, agua, emisiones e inversión.
+Tablero interactivo que proyecta, año por año desde los datos oficiales de 2026 hasta 2050, cómo la adopción de inteligencia artificial, la robótica y las políticas de Estado afectan el empleo, el valor del trabajo humano, la pobreza (sobre todo la infantil), la desigualdad, la población, el bienestar y la tensión social. Incluye además el crecimiento de la IA y los recursos que consume: electricidad, agua, emisiones e inversión.
 
 **Ver el simulador funcionando:** https://vgomezmza.github.io/simulador-ia-sociedad/
 
@@ -14,8 +14,9 @@ No es una predicción. Es un modelo de mecanismos con datos oficiales de partida
 
 ## Qué incluye
 
-- **22 controles** de tecnología y de política: velocidad de la IA, sustitución del trabajo humano, regulación, impuesto a la renta de la IA, ingreso básico, asignación por hijo, recalificación, formalización, reducción de jornada, financiamiento, natalidad, migración, vivienda, educación, salud, teletrabajo, energía, agua y centros de datos. Cada control dice qué resultados mueve.
+- **24 controles** de tecnología y de política: velocidad de la IA, velocidad de la robótica, sustitución del trabajo humano, regulación, impuesto a la renta de la IA, impuesto a la automatización, ingreso básico, asignación por hijo, recalificación, formalización, reducción de jornada, financiamiento, natalidad, migración, vivienda, educación, salud, teletrabajo, energía, agua y centros de datos. Cada control dice qué resultados mueve.
 - **Proyección con inicio fijo en 2026**: los gráficos muestran desde el dato oficial hasta el año elegido, o el horizonte completo 2026–2050.
+- **IA y robótica por separado**: la IA reemplaza tareas de oficina; los robots, trabajo manual (industria, logística, agro, construcción), partiendo de la densidad real de robots de cada territorio (IFR).
 - **Valor del trabajo humano**: qué parte del ingreso va a los trabajadores, salario real medio y salario de quien pierde el empleo por la IA y consigue otro.
 - **Bienestar subjetivo** (satisfacción con la vida, 0–10) y **tensión social** (índice compuesto).
 - **Conclusiones a 2050 automáticas**:

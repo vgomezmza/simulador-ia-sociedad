@@ -15,10 +15,10 @@ Con todos los controles en su valor por defecto, la población proyectada se com
 
 ## Pruebas automáticas (`tests/spec.js`)
 
-Más de 1.500 comprobaciones, que deben pasar todas:
+Más de 1.600 comprobaciones, que deben pasar todas:
 
 1. **Calibración 2026.** En cualquier escenario, cada territorio reproduce su dato oficial de desocupación, pobreza, pobreza infantil, indigencia, Gini, mortalidad infantil, fecundidad y adopción.
-2. **Dirección de cada política.** Subir cada control mueve sus resultados en el sentido esperado. Por ejemplo, más recalificación baja la desocupación, y más sustitución del trabajo humano baja la parte del ingreso para el trabajo, el salario y la población.
+2. **Dirección de cada política.** Subir cada control mueve sus resultados en el sentido esperado. Por ejemplo, más recalificación baja la desocupación, y más sustitución del trabajo humano baja la parte del ingreso para el trabajo, el salario y la población, y más robótica aumenta el empleo desplazado por robots.
 3. **Rangos plausibles.** En escenarios guardados, extremos y 150 combinaciones aleatorias:
    - ningún indicador sale de rangos posibles;
    - ningún valor es "NaN";

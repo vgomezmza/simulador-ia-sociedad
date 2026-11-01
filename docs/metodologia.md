@@ -23,6 +23,17 @@ $$u^s_{t+1}=u^s_t + D_t(1-u_t) - C_t(1-u_t) - f_s\,u^s_t$$
 - **$C_t$, empleo creado:** $0{,}25\,\Delta A\,E\,(1-s)$.
 - **$f_s$, reinserción:** $0{,}25\,(1+0{,}8\,\text{recalificación})$ por año.
 
+## 2 bis. Robótica
+
+$$R_{t+1}=R_t + v\,(1-0{,}6\,\tau_R)\,\big[0{,}065\,R_t(1-R_t) + 0{,}006\,A_t(1-R_t)\big]$$
+
+- **$R$:** robotización como fracción de la frontera (Corea, 1.220 robots por 10.000 empleados industriales).
+- **Datos de partida:** Argentina 25, UE 231 (IFR). América Latina (40) y Londres (120) son supuestos.
+- **Controles y efecto de la IA:** $v$ es la velocidad de la robótica y $\tau_R$ el impuesto a la automatización. La IA ($A_t$) vuelve a los robots más capaces.
+- **Empleo expuesto:** $M = 0{,}6\cdot$industria $+\ 0{,}3\cdot$(construcción, transporte y agro). En Argentina es el 13,8 % del empleo.
+- **Desplazados por robots:** $\Delta R\cdot M\cdot 0{,}7$. Entran al mismo circuito de desocupación, reinserción y pérdida salarial que los de la IA, y se crean empleos de mantenimiento (20 %).
+- **Renta de los robots que va al capital:** $\rho^R_t = 0{,}5\,R_t\,M$. Baja la parte del ingreso para el trabajo y sube la desigualdad, salvo la parte gravada por $\tau_R$.
+
 ## 3. Valor del trabajo humano
 
 $$LS_t = LS_0\,\frac{TE_t}{TE_0}\,(1-\pi_t R_t) - (\rho_t-\rho_0),\qquad \rho_t=0{,}35\,A_t\,E\,(0{,}3+0{,}6\,s)$$
@@ -90,10 +101,10 @@ $$\Delta LS^{vida}_t = 0{,}7\ln\frac{y_t}{y_{2026}} - 0{,}7\,(u_t-u_0) - 1{,}4\,
   - crecimiento y captura de renta;
   - eficacia de las políticas;
   - fecundidad, migración y mortalidad infantil;
-  - velocidad de la IA.
+  - velocidad de la IA y de la robótica.
 - **Rango del 80 %:** percentiles 10 y 90.
 - **Descomposición del cambio 2026→2050:**
-  - *tendencia*: sin IA nueva ni políticas;
-  - *IA*: escenario tecnológico elegido menos un mundo sin más adopción;
+  - *tendencia*: sin IA ni robots nuevos ni políticas;
+  - *IA y robots*: escenario tecnológico elegido menos un mundo sin más adopción de IA ni de robots;
   - *políticas*: políticas elegidas menos ninguna política nueva.
 - **Ranking de políticas:** efecto en 2050 de un paso adicional de cada política y su costo fiscal medio 2030–2050.

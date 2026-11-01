@@ -187,7 +187,7 @@
             <div class="space-y-2">
                 <h3 class="text-xs uppercase tracking-wide font-semibold text-slate-400">De dónde sale el cambio 2026 → 2050</h3>
                 <div class="overflow-x-auto"><table class="w-full text-xs text-left text-slate-300 font-mono">
-                    <thead class="text-[11px] uppercase bg-slate-900/90 text-slate-400 border-b border-slate-700"><tr><th class="px-3 py-2 font-sans">Indicador</th><th class="px-3 py-2 text-right">2026</th><th class="px-3 py-2 text-right" title="Crecimiento, demografía y dinámica propia, sin IA nueva ni políticas">Tendencia</th><th class="px-3 py-2 text-right" title="Diferencia entre el escenario tecnológico elegido y un mundo sin más adopción de IA">IA</th><th class="px-3 py-2 text-right" title="Diferencia entre las políticas elegidas y ninguna política nueva">Políticas</th><th class="px-3 py-2 text-right">2050</th></tr></thead>
+                    <thead class="text-[11px] uppercase bg-slate-900/90 text-slate-400 border-b border-slate-700"><tr><th class="px-3 py-2 font-sans">Indicador</th><th class="px-3 py-2 text-right">2026</th><th class="px-3 py-2 text-right" title="Crecimiento, demografía y dinámica propia, sin IA nueva ni políticas">Tendencia</th><th class="px-3 py-2 text-right" title="Diferencia entre el escenario tecnológico elegido y un mundo sin más adopción de IA ni de robots">IA y robots</th><th class="px-3 py-2 text-right" title="Diferencia entre las políticas elegidas y ninguna política nueva">Políticas</th><th class="px-3 py-2 text-right">2050</th></tr></thead>
                     <tbody id="decBody" class="divide-y divide-slate-800"></tbody></table></div>
             </div>
         </div>
@@ -238,8 +238,8 @@
     <h2 class="text-base font-bold text-slate-200 flex items-center gap-2"><i class="fa-solid fa-chart-line text-cyan-400"></i> Gráficos de proyección 2026–2050 — <span class="focusName"></span></h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="glass-panel p-5 rounded-2xl space-y-2" data-fold="ch-adoption" data-wide>
-            <h3 class="text-sm font-bold text-slate-200 flex items-start justify-between gap-2"><span><i class="fa-solid fa-microchip text-purple-400 mr-1"></i> Adopción de IA (Bass) y empleo desplazado — <span class="focusName"></span></span><button class="info-btn mt-0.5" data-ex="ch_adoption" data-tip="Adopción de IA, empleo desplazado y desocupación." aria-label="Explicación del gráfico">i</button></h3>
-            <p class="text-xs text-slate-400">Curva S de adopción, empleos desplazados acumulados y desocupación resultante.</p>
+            <h3 class="text-sm font-bold text-slate-200 flex items-start justify-between gap-2"><span><i class="fa-solid fa-microchip text-purple-400 mr-1"></i> IA, robots y empleo desplazado — <span class="focusName"></span></span><button class="info-btn mt-0.5" data-ex="ch_adoption" data-tip="Adopción de IA, empleo desplazado y desocupación." aria-label="Explicación del gráfico">i</button></h3>
+            <p class="text-xs text-slate-400">Curva S de adopción de IA, robotización (100 = Corea, el país con más robots) y empleos desplazados acumulados: amarillo, todos (IA y robots); naranja punteado, solo por robots. Rosa: desocupación resultante.</p>
             <div class="h-64"><canvas id="chAdoption"></canvas></div>
         </div>
         <div class="glass-panel p-5 rounded-2xl space-y-2" data-fold="ch-poverty" data-wide>
@@ -841,6 +841,35 @@ $$A_{t+1}=A_t + k_t\left(p+q\frac{A_t}{A_{max}}\right)(A_{max}-A_t)$$
 <p>El rango no incluye lo que el modelo no tiene: inflación, crisis financieras, cambios de régimen político, guerras o pandemias. Es el rango de los supuestos modelados, no de todo el futuro.</p>
 </template>
 
+<template data-ex="robot" data-title="Velocidad de la robótica">
+<h4>Qué es</h4>
+<p>El ritmo al que se incorporan robots físicos: brazos industriales, robots de depósito y logística, maquinaria agrícola autónoma, robots de construcción, vehículos autónomos y, más adelante, robots humanoides. Es distinto de la IA: la IA reemplaza tareas de oficina; los robots, trabajo manual.</p>
+<h4>Datos de partida (robots por cada 10.000 empleados industriales)</h4>
+<ul><li>Argentina: 25 (IFR). Mendoza y CABA usan el dato nacional.</li>
+<li>América Latina: 40 (supuesto, entre Argentina y México, que tiene 62).</li>
+<li>Unión Europea: 231 (IFR 2024); Madrid usa ese valor. Londres: 120 (supuesto).</li>
+<li>Frontera: Corea, 1.220. Promedio mundial: 132.</li></ul>
+<h4>Cómo se calcula</h4>
+$$R_{t+1}=R_t + v\,(1-0{,}6\,	au_R)\,\big[0{,}065\,R_t(1-R_t) + 0{,}006\,A_t(1-R_t)\big]$$
+<p>\(R\) es la robotización como fracción de la frontera, \(v\) la velocidad elegida, \(\tau_R\) el impuesto a la automatización y \(A_t\) la adopción de IA, que vuelve a los robots más capaces. Con \(v=1\), Argentina pasa de 25 a unos 280 robots hacia 2050, más o menos el nivel que hoy tiene Europa.</p>
+<h4>Efecto en el empleo y los ingresos</h4>
+<ul><li><b>Empleo expuesto</b>: 60 % del empleo industrial y 30 % del resto del trabajo manual (construcción, transporte, agro). Argentina: 13,8 % del empleo; Londres: 4,5 %.</li>
+<li><b>Desplazados</b>: \(\Delta R \times\) empleo expuesto \(\times 0{,}7\): los robots sustituyen más de lo que complementan. Se crean empleos de mantenimiento e instalación (20 %).</li>
+<li><b>Renta</b>: la mitad de lo que producen los robots va al capital: baja la parte del ingreso para el trabajo y sube la desigualdad.</li>
+<li>Los desplazados pasan por el mismo circuito que los de la IA: desocupación, reinserción y salario más bajo.</li></ul>
+</template>
+
+<template data-ex="robotTax" data-title="Impuesto a la automatización">
+<h4>Qué es</h4>
+<p>Un impuesto sobre la renta que generan los robots, la idea que Bill Gates propuso en 2017 como "impuesto a los robots".</p>
+<h4>Efectos</h4>
+<ul><li>Frena la incorporación de robots: con 30 %, el ritmo baja un 18 %.</li>
+<li>Recauda una parte de la renta de los robots para financiar las políticas.</li>
+<li>Reduce la parte de esa renta que se queda el capital, y con eso la desigualdad.</li></ul>
+<h4>El dilema</h4>
+<p>Si se frena demasiado la robotización, la economía pierde productividad frente a otros países. El tablero muestra las dos caras: menos desplazamiento y más recaudación, pero menos crecimiento.</p>
+</template>
+
 <template data-ex="ch_labor" data-title="Valor del trabajo humano">
 <h4>Qué muestra</h4>
 <p>Cuánto vale el trabajo de las personas cuando la IA hace parte de sus tareas. Tres medidas:</p>
@@ -1063,7 +1092,7 @@ $$\text{Capex}=(\Delta GW_{nuevos}+0{,}1\,P_t)\times38$$
 
 <footer class="max-w-7xl mx-auto w-full mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="space-y-1 text-center md:text-left">
-        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v5 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
+        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v6 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
         <p class="text-[11px]">Autor: <span class="text-cyan-400 font-medium">Victor Javier Gómez Saá</span> |
             <a href="mailto:vgomez40@mercurycad.com.ar" class="text-cyan-400 hover:underline">vgomez40@mercurycad.com.ar</a> |
             <a href="https://mercurycad.com.ar" class="text-cyan-400 hover:underline">mercurycad.com.ar</a></p>
@@ -1106,67 +1135,67 @@ const A_ = (v, n) => [v, 'sup', n];
 
 const TERRITORIES = [
     { id: 'ar', name: 'Argentina (31 aglomerados)', short: 'Argentina', color: '#06b6d4', line: 'abs', metro: false,
-      ls: S(46, 'Remuneración del trabajo asalariado: 46 % del valor agregado bruto, 2.º trim. 2025 (INDEC)'), migHist: 2.3, popYears: 4, pop: S(46044703, 'Censo 2022, resultados provisorios (INDEC); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.4, 'TGF 2022 (INDEC, Dosier La transformación de la población)'),
+      ls: S(46, 'Remuneración del trabajo asalariado: 46 % del valor agregado bruto, 2.º trim. 2025 (INDEC)'), rob: S(25, 'Robots industriales por cada 10.000 empleados manufactureros (IFR, vía Mercado)'), manu: D(12, 'Industria manufacturera: 2,37 M de 19,7 M de ocupados (Idelas-UCES)'), manOther: A_(22, 'Supuesto: construcción, transporte y logística y agro, % del empleo'), migHist: 2.3, popYears: 4, pop: S(46044703, 'Censo 2022, resultados provisorios (INDEC); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.4, 'TGF 2022 (INDEC, Dosier La transformación de la población)'),
       ta: S(48.9, 'EPH 2.º trim. 2026 (INDEC)'), u: S(7.9, 'EPH 2.º trim. 2026 (INDEC)'), H: S(32.3, 'Pobreza 1.er sem. 2026 (INDEC)'),
       Hc: S(44.5, 'Pobreza 0-14 años, 1.er sem. 2026 (INDEC)'), I: S(7.5, 'Indigencia 1.er sem. 2026 (INDEC)'), gini: S(0.428, 'Gini ingreso per cápita familiar, 2.º trim. 2026 (INDEC)'),
       tmi: S(8.5, 'TMI 2024 (Ministerio de Salud de la Nación)'), inf: S(45, 'Informalidad 2.º trim. 2026 (INDEC, vía El Economista)'),
-      k: D(6.39, '413.135 nacimientos 2024 / 46,2 M hab. / TGF 1,4'), tbm: A_(7.5, 'Supuesto: tasa bruta de mortalidad'), mig: D(4.0, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para que el escenario base reproduzca la proyección de largo plazo: pico ~5 % sobre la población actual (Argendata/CIPPEC); absorbe también los supuestos de fecundidad y mortalidad'),
+      k: D(6.39, '413.135 nacimientos 2024 / 46,2 M hab. / TGF 1,4'), tbm: A_(7.5, 'Supuesto: tasa bruta de mortalidad'), mig: D(4.3, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para que el escenario base reproduzca la proyección de largo plazo: pico ~5 % sobre la población actual (Argendata/CIPPEC); absorbe también los supuestos de fecundidad y mortalidad'),
       g: A_(1.5, 'Supuesto: crecimiento real per cápita %/año'), E: A_(0.28, 'Supuesto: empleo en tareas expuestas a IA generativa'), lag: A_(1.5, 'Supuesto: años de rezago de adopción respecto de la frontera; con este valor la adopción de 2026 es cerca de la mitad de la europea, en línea con un uso de IA generativa en el trabajo menor que en la UE'),
       hf: A_(0.05, 'Supuesto: costo de vivienda no cubierto, fracción de la línea'), child: A_(0.27, 'Supuesto: menores de 18 / población (Mendoza: 27,8 %)'),
       tmiDec: D(0.031, '16,6 ‰ (2000) → 8,0 ‰ (2023): −3,1 % anual'), tgfMin: A_(1.1, 'Supuesto: piso de fecundidad') },
 
     { id: 'mza', name: 'Mendoza (Gran Mendoza)', short: 'Mendoza', color: '#a78bfa', line: 'abs', metro: false,
-      ls: D(46, 'Se usa el dato nacional: 46 % del valor agregado (INDEC, 2.º trim. 2025)'), migHist: 2.0, popYears: 4, pop: S(2014533, 'Censo 2022, resultados provisorios; llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.34, 'TGF 2023 (DEIE Mendoza)'),
+      ls: D(46, 'Se usa el dato nacional: 46 % del valor agregado (INDEC, 2.º trim. 2025)'), rob: D(25, 'Se usa el dato nacional (IFR)'), manu: A_(10, 'Supuesto: industria algo menor que el promedio nacional'), manOther: A_(25, 'Supuesto: mayor peso del agro y la vitivinicultura'), migHist: 2.0, popYears: 4, pop: S(2014533, 'Censo 2022, resultados provisorios; llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.34, 'TGF 2023 (DEIE Mendoza)'),
       ta: S(48.4, 'EPH 1.er trim. 2026, Gran Mendoza'), u: S(7.3, 'EPH 1.er trim. 2026, Gran Mendoza'), H: S(36.9, 'Pobreza 1.er sem. 2026, Gran Mendoza (INDEC)'),
       Hc: A_(50.8, 'Supuesto: pobreza total × razón nacional infantil/total (44,5/32,3)'), I: S(7.3, 'Indigencia 1.er sem. 2026, Gran Mendoza'), gini: A_(0.428, 'Supuesto: Gini nacional'),
       tmi: S(7.5, 'TMI 2024 (Ministerio de Salud de Mendoza)'), inf: A_(45, 'Supuesto: informalidad nacional'),
-      k: D(5.51, '15.419 nacimientos 2025 / 2,09 M hab. proyectados / TGF 1,34'), tbm: A_(7.0, 'Supuesto'), mig: A_(3.2, 'Supuesto: saldo migratorio de referencia ‰, antes de restar el efecto del deterioro laboral; mantiene el crecimiento moderado reciente de Mendoza'),
+      k: D(5.51, '15.419 nacimientos 2025 / 2,09 M hab. proyectados / TGF 1,34'), tbm: A_(7.0, 'Supuesto'), mig: A_(3.5, 'Supuesto: saldo migratorio de referencia ‰, antes de restar el efecto del deterioro laboral; mantiene el crecimiento moderado reciente de Mendoza'),
       g: A_(1.5, 'Supuesto'), E: A_(0.26, 'Supuesto'), lag: A_(1.5, 'Supuesto: años de rezago de adopción respecto de la frontera; con este valor la adopción de 2026 es cerca de la mitad de la europea, en línea con un uso de IA generativa en el trabajo menor que en la UE'), hf: A_(0.05, 'Supuesto'), child: S(0.278, 'Menores de 18 = 27,8 % (Censo 2022)'),
       tmiDec: D(0.031, 'Tendencia nacional'), tgfMin: A_(1.1, 'Supuesto') },
 
     { id: 'caba', name: 'Ciudad de Buenos Aires', short: 'CABA', color: '#22d3ee', line: 'abs', metro: true,
-      ls: D(46, 'Se usa el dato nacional: 46 % del valor agregado (INDEC, 2.º trim. 2025)'), migHist: 6.9, popYears: 4, pop: S(3120612, 'Censo 2022, resultados provisorios; llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.09, 'TGF 2023 (IDECBA)'),
+      ls: D(46, 'Se usa el dato nacional: 46 % del valor agregado (INDEC, 2.º trim. 2025)'), rob: D(25, 'Se usa el dato nacional (IFR)'), manu: A_(8, 'Supuesto: ciudad de servicios'), manOther: A_(12, 'Supuesto: construcción, transporte y logística'), migHist: 6.9, popYears: 4, pop: S(3120612, 'Censo 2022, resultados provisorios; llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.09, 'TGF 2023 (IDECBA)'),
       ta: A_(50, 'Supuesto (la ETOI usa otra población de referencia)'), u: S(5.6, 'EPH 2.º trim. 2026 (INDEC)'), H: A_(18, 'Supuesto: sin dato 2026 verificado'),
       Hc: A_(28, 'Supuesto'), I: A_(4, 'Supuesto'), gini: A_(0.40, 'Supuesto'),
       tmi: S(4.9, 'TMI 2024 (SAP / Ministerio de Salud)'), inf: A_(35, 'Supuesto'),
-      k: A_(5.5, 'Supuesto'), tbm: A_(10.5, 'Supuesto: población envejecida'), tbmDrift: A_(0.03, 'Supuesto: la población ya envejecida de CABA eleva poco su mortalidad bruta (resto: +0,08 ‰ por año)'), mig: D(9.2, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral,: CABA tiene más defunciones que nacimientos y aun así creció de 2,89 M (2010) a 3,12 M (2022) por inmigración; el escenario base la mantiene estable'),
+      k: A_(5.5, 'Supuesto'), tbm: A_(10.5, 'Supuesto: población envejecida'), tbmDrift: A_(0.03, 'Supuesto: la población ya envejecida de CABA eleva poco su mortalidad bruta (resto: +0,08 ‰ por año)'), mig: D(9.4, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral,: CABA tiene más defunciones que nacimientos y aun así creció de 2,89 M (2010) a 3,12 M (2022) por inmigración; el escenario base la mantiene estable'),
       g: A_(1.5, 'Supuesto'), E: A_(0.38, 'Supuesto: economía de servicios'), lag: A_(1, 'Supuesto'), hf: A_(0.15, 'Supuesto'), child: A_(0.20, 'Supuesto'),
       tmiDec: D(0.031, 'Tendencia nacional'), tgfMin: A_(0.9, 'Supuesto') },
 
     { id: 'latam', name: 'América Latina y el Caribe', short: 'América Latina', color: '#34d399', line: 'abs', metro: false,
-      ls: A_(40, 'Supuesto: menor que en Argentina por la mayor informalidad de la región'), migHist: -0.8, popYears: 2, pop: D(635e6, '162 M de pobres / 25,5 % (CEPAL); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.8, 'TGF 2024 (CEPAL)'),
+      ls: A_(40, 'Supuesto: menor que en Argentina por la mayor informalidad de la región'), rob: A_(40, 'Supuesto: entre Argentina (25) y México (62) (IFR)'), manu: A_(12, 'Supuesto: industria manufacturera regional'), manOther: A_(28, 'Supuesto: agro, construcción y transporte'), migHist: -0.8, popYears: 2, pop: D(635e6, '162 M de pobres / 25,5 % (CEPAL); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.8, 'TGF 2024 (CEPAL)'),
       ta: S(63.3, 'Participación 1.er sem. 2025, 15+ (OIT)'), u: S(5.3, 'Desocupación 2025 (OIT)'), H: S(25.5, 'Pobreza 2024 (CEPAL, Panorama Social 2025)'),
       Hc: A_(35, 'Supuesto'), I: null, gini: D(0.464, 'Derivado: el 10 % más rico capta 34,2 % (CEPAL) bajo log-normal'),
       tmi: A_(14, 'Supuesto'), inf: S(46.7, 'Informalidad 1.er sem. 2025 (OIT)'),
-      k: A_(7.8, 'Supuesto'), tbm: A_(6.5, 'Supuesto'), mig: D(0.6, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección de CEPAL: 663 M en 2024, máximo ~730 M en 2053'),
+      k: A_(7.8, 'Supuesto'), tbm: A_(6.5, 'Supuesto'), mig: D(0.9, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección de CEPAL: 663 M en 2024, máximo ~730 M en 2053'),
       g: A_(1.2, 'Supuesto'), E: A_(0.24, 'Supuesto'), lag: A_(1.8, 'Supuesto: años de rezago de adopción respecto de la frontera; algo mayor que en Argentina por la menor conectividad y formalidad promedio de la región'), hf: A_(0.05, 'Supuesto'), child: A_(0.28, 'Supuesto'),
       tmiDec: A_(0.025, 'Supuesto'), tgfMin: A_(1.2, 'Supuesto') },
 
     { id: 'mad', name: 'Comunidad de Madrid', short: 'Madrid', color: '#f59e0b', line: 'rel', metro: true,
-      ls: S(59.1, 'Participación del trabajo en el ingreso, España (OIT)'), migHist: 11.4, popYears: 1, pop: S(7113886, 'Población 1-1-2025 (INE); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.03, 'TGF (INE)'),
+      ls: S(59.1, 'Participación del trabajo en el ingreso, España (OIT)'), rob: D(231, 'Se usa el promedio de la UE (IFR 2024: 231); España está entre los 20 países más robotizados'), manu: A_(8, 'Supuesto: Madrid, economía de servicios'), manOther: A_(13, 'Supuesto: construcción, transporte y logística'), migHist: 11.4, popYears: 1, pop: S(7113886, 'Población 1-1-2025 (INE); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.03, 'TGF (INE)'),
       ta: S(62.9, 'Tasa de actividad 16+, 3.er trim. 2025 (EPA)'), u: S(7.6, 'EPA 2.º trim. 2026'), H: S(12.9, 'Riesgo de pobreza 2023 (INE, ECV)'),
       Hc: S(25.7, 'AROPE 0-17 años 2023 (UNICEF / ECV)'), I: null, gini: A_(0.32, 'Supuesto'),
       tmi: S(3.04, 'TMI España (INE)'), inf: null,
-      k: A_(6.5, 'Supuesto'), tbm: D(7.0, '49.408 defunciones 2024 / 7,06 M hab.'), mig: D(13.5, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección del INE: 8,20 M en 2041 (+14,4 % en 15 años) con saldo natural negativo'),
+      k: A_(6.5, 'Supuesto'), tbm: D(7.0, '49.408 defunciones 2024 / 7,06 M hab.'), mig: D(13.8, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección del INE: 8,20 M en 2041 (+14,4 % en 15 años) con saldo natural negativo'),
       g: A_(1.5, 'Supuesto'), E: A_(0.36, 'Supuesto'), lag: A_(1, 'Supuesto'), hf: A_(0.25, 'Supuesto: alquiler caro'), child: A_(0.18, 'Supuesto'),
       tmiDec: A_(0.015, 'Supuesto'), tgfMin: A_(0.9, 'Supuesto') },
 
     { id: 'lon', name: 'Londres (Greater London)', short: 'Londres', color: '#f43f5e', line: 'rel', metro: true,
-      ls: A_(57, 'Supuesto: similar al promedio europeo (OIT: 57 %)'), migHist: 4.6, popYears: 2, pop: S(9089736, 'Estimación mediados 2024 (ONS); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.35, 'TGF 2024 (ONS)'),
+      ls: A_(57, 'Supuesto: similar al promedio europeo (OIT: 57 %)'), rob: A_(120, 'Supuesto: Reino Unido, por debajo del promedio europeo'), manu: A_(2.5, 'Supuesto: Londres casi sin industria'), manOther: A_(10, 'Supuesto: construcción, transporte y logística'), migHist: 4.6, popYears: 2, pop: S(9089736, 'Estimación mediados 2024 (ONS); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.35, 'TGF 2024 (ONS)'),
       ta: A_(66, 'Supuesto'), u: S(7.3, 'Desocupación ene-mar 2026 (ONS)'), H: S(27, 'Pobreza relativa después de vivienda 2024/25 (Trust for London)'),
       Hbhc: S(15, 'Pobreza antes de vivienda (Trust for London)'),
       Hc: S(37, 'Pobreza infantil <16 AHC 2024/25 (Trust for London)'), I: null, gini: A_(0.38, 'Supuesto'),
       tmi: S(3.3, 'TMI promedio trienal (Trust for London / OHID)'), inf: null,
-      k: D(8.83, '105.100 nacimientos / 8,95 M hab. / TGF 1,33 (2023)'), tbm: D(6.0, '53.500 defunciones / 8,95 M hab. (2023)'), mig: D(7.2, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección central de la GLA: 10,5–10,9 M en 2050'),
+      k: D(8.83, '105.100 nacimientos / 8,95 M hab. / TGF 1,33 (2023)'), tbm: D(6.0, '53.500 defunciones / 8,95 M hab. (2023)'), mig: D(7.4, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección central de la GLA: 10,5–10,9 M en 2050'),
       g: A_(1.0, 'Supuesto'), E: A_(0.40, 'Supuesto: servicios financieros y profesionales'), lag: A_(0, 'Supuesto'), hf: null, child: A_(0.22, 'Supuesto'),
       tmiDec: A_(0.015, 'Supuesto'), tgfMin: A_(0.9, 'Supuesto') },
 
     { id: 'eu', name: 'Unión Europea (27)', short: 'UE', color: '#60a5fa', line: 'rel', metro: false,
-      ls: S(57, 'Participación del trabajo en el PIB, promedio de la UE (OIT)'), migHist: 4.3, popYears: 1, pop: S(450.4e6, 'Población 1-1-2025 (Eurostat); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.34, 'TGF 2024 (Eurostat)'),
+      ls: S(57, 'Participación del trabajo en el PIB, promedio de la UE (OIT)'), rob: S(231, 'Robots por cada 10.000 empleados industriales, UE 2024 (IFR, abril 2026)'), manu: D(13.7, 'Manufactura: ~30 M de ~219 M de ocupados (Eurostat vía Statista)'), manOther: A_(16, 'Supuesto: construcción, transporte y agro'), migHist: 4.3, popYears: 1, pop: S(450.4e6, 'Población 1-1-2025 (Eurostat); llevada a 2026 con la natalidad, mortalidad y migración del territorio'), tgf: S(1.34, 'TGF 2024 (Eurostat)'),
       ta: A_(58, 'Supuesto'), u: S(6.1, 'Desocupación julio 2026 (Eurostat)'), H: S(20.9, 'AROPE 2025 (Eurostat), usado como proxy'),
       Hc: S(22.1, 'AROPE en hogares con hijos 2025 (Eurostat)'), I: null, gini: A_(0.30, 'Supuesto'),
       tmi: S(3.3, 'TMI 2022 (Eurostat)'), inf: null,
-      k: D(5.94, 'Natalidad bruta 8,2 ‰ / TGF 1,38 (2023)'), tbm: S(10.8, 'Mortalidad bruta (Eurostat)'), mig: D(6.3, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección europea: pico de 453 M en 2029 y ~445 M en 2050 (JRC / Eurostat); 2023 fue 3,7 ‰'),
+      k: D(5.94, 'Natalidad bruta 8,2 ‰ / TGF 1,38 (2023)'), tbm: S(10.8, 'Mortalidad bruta (Eurostat)'), mig: D(6.9, 'Saldo migratorio de referencia calibrado (‰), antes de restar el efecto del deterioro laboral, para reproducir la proyección europea: pico de 453 M en 2029 y ~445 M en 2050 (JRC / Eurostat); 2023 fue 3,7 ‰'),
       g: A_(1.2, 'Supuesto'), E: A_(0.33, 'Supuesto'), lag: A_(1, 'Supuesto'), hf: A_(0.10, 'Supuesto'), child: S(0.19, 'Menores de 19 ≈ 20 % (Eurostat)'),
       tmiDec: A_(0.015, 'Supuesto'), tgfMin: A_(1.0, 'Supuesto') },
 ];
@@ -1176,12 +1205,16 @@ const val = f => (f == null ? null : f[0]);
 const CONTROLS = [
     { group: 'Escenario tecnológico (no es política)', icon: 'fa-microchip', items: [
         { id: 'accel', label: 'Velocidad de la IA', min: 0.5, max: 2.5, step: 0.1, def: 1.2, fmt: v => v.toFixed(1) + '×', help: 'Escala p y q de la curva de Bass. 1× = parámetros típicos de difusión tecnológica.', vu: { z: [[0.9, 'Lenta', '#22c55e'], [1.4, 'Tendencia histórica', '#eab308'], [1.9, 'Acelerada', '#f97316'], [2.5, 'Disruptiva', '#ef4444']], ref: [1.2, 'base'] } },
+        { id: 'robot', label: 'Velocidad de la robótica', min: 0, max: 3, step: 0.1, def: 1, fmt: v => v.toFixed(1) + '×', help: 'Ritmo de incorporación de robots físicos (fábricas, depósitos, agro, construcción, vehículos). 1 = tendencia reciente de la densidad mundial de robots; además, la IA vuelve más capaces a los robots.',
+          vu: { ref: [1, 'tendencia'], z: [[0.6, 'Lenta', '#22c55e'], [1.4, 'Tendencia', '#eab308'], [2.2, 'Rápida', '#f97316'], [3, 'Explosiva (robots humanoides)', '#ef4444']] } },
         { id: 'subst', label: 'Sustitución vs. complemento', min: 20, max: 80, step: 5, def: 50, fmt: v => v + ' %', help: 'Qué parte de las tareas expuestas la IA reemplaza en vez de potenciar al trabajador.', vu: { z: [[35, 'Mayormente complementa', '#22c55e'], [55, 'Mixta', '#eab308'], [70, 'Mayormente sustituye', '#f97316'], [80, 'Sustitución intensa', '#ef4444']] } },
     ]},
     { group: 'Regulación y fiscalidad', icon: 'fa-landmark', items: [
         { id: 'reg', label: 'Regulación de la IA', min: 0, max: 100, step: 5, def: 15, fmt: v => v + ' %', help: 'Exigir supervisión humana y evaluación de impacto: frena la adopción y reduce la sustitución.', vu: { z: [[20, 'Ligera', '#22c55e'], [50, 'Moderada', '#eab308'], [75, 'Estricta', '#f97316'], [100, 'Prohibitiva', '#ef4444']] } },
         { id: 'tax', label: 'Impuesto a rentas de IA', min: 0, max: 50, step: 5, def: 10, fmt: v => v + ' %', help: 'Tasa sobre la renta extraordinaria del capital que usa IA. Financia las políticas y reduce la desigualdad.', vu: { z: [[10, 'Simbólico', '#22c55e'], [25, 'Moderado', '#eab308'], [40, 'Alto', '#f97316'], [50, 'Muy alto', '#ef4444']] } },
         { id: 'ubi', label: 'Ingreso básico universal', min: 0, max: 100, step: 5, def: 0, fmt: v => v + ' % de la línea', help: 'Monto por persona como % de la línea de pobreza local. Adicional a lo vigente. Ver su costo.', vu: { z: [[10, 'Complemento', '#22c55e'], [30, 'Significativo', '#eab308'], [60, 'Costo fiscal alto', '#f97316'], [100, 'Cubre toda la línea', '#ef4444']] } },
+        { id: 'robotTax', label: 'Impuesto a la automatización', min: 0, max: 30, step: 5, def: 0, fmt: v => v + ' %', help: 'Impuesto sobre la renta que generan los robots. Frena algo su incorporación y recauda para financiar las políticas.',
+          vu: { z: [[0, 'Sin impuesto', '#94a3b8'], [10, 'Moderado', '#22c55e'], [20, 'Alto', '#eab308'], [30, 'Muy alto', '#f97316']] } },
         { id: 'finTax', label: 'Financiamiento del gasto nuevo con impuestos', min: 0, max: 100, step: 10, def: 50, fmt: v => v + ' % impuestos', help: 'Qué parte del déficit de las políticas nuevas se cubre con impuestos (resta ingreso a los hogares y algo de crecimiento) y qué parte con deuda (se acumula y paga intereses del 3 % real, que también se cubren con impuestos).',
           vu: { z: [[20, 'Mayormente deuda', '#f97316'], [60, 'Mixto', '#eab308'], [100, 'Mayormente impuestos', '#22c55e']] } },
         { id: 'childb', label: 'Asignación por hijo ampliada', min: 0, max: 100, step: 5, def: 0, fmt: v => v + ' % de la línea', help: 'Transferencia por menor de 18. Más barata que el IBU por punto de pobreza infantil reducido.', vu: { z: [[20, 'Refuerzo leve', '#22c55e'], [50, 'Refuerzo fuerte', '#eab308'], [80, 'Muy amplio', '#f97316'], [100, 'Cubre toda la línea', '#ef4444']] } },
@@ -1202,15 +1235,15 @@ const CONTROLS = [
         { id: 'tele', label: 'Teletrabajo y descentralización', min: 0, max: 100, step: 5, def: 30, fmt: v => v + ' %', help: 'Incentivos a trabajar desde ciudades intermedias: éxodo desde las metrópolis.', vu: { z: [[25, 'Bajo', '#22c55e'], [50, 'Moderado', '#eab308'], [75, 'Alto', '#f97316'], [100, 'Máximo', '#ef4444']], ref: [30, 'base'] } },
     ]},
 ];
-const POLICY_IDS = ['reg', 'tax', 'ubi', 'childb', 'retrain', 'formal', 'hours', 'natal', 'housing', 'edu', 'health', 'tele'];
+const POLICY_IDS = ['robotTax', 'reg', 'tax', 'ubi', 'childb', 'retrain', 'formal', 'hours', 'natal', 'housing', 'edu', 'health', 'tele'];
 const DEFAULTS = Object.fromEntries(CONTROLS.flatMap(g => g.items).map(c => [c.id, c.def]));
 
 const PRESETS = {
     base:      { name: 'Base moderado', icon: 'fa-scale-balanced text-cyan-400', v: { ...DEFAULTS } },
-    dereg:     { name: 'Desregulado', icon: 'fa-bolt text-amber-400', v: { accel: 2.0, subst: 60, reg: 0, tax: 0, ubi: 0, childb: 0, retrain: 0, formal: 0, hours: 0, natal: 0, mig: 1.2, housing: 0, edu: 0, health: 0, tele: 60 } },
-    welfare:   { name: 'Estado de bienestar', icon: 'fa-hand-holding-heart text-emerald-400', v: { accel: 1.2, subst: 50, reg: 30, tax: 35, ubi: 30, childb: 50, retrain: 1.2, formal: 60, hours: 10, natal: 50, mig: 1, housing: 50, edu: 1.5, health: 0.5, tele: 50 } },
-    targeted:  { name: 'Inversión focalizada', icon: 'fa-bullseye text-purple-400', v: { accel: 1.2, subst: 50, reg: 20, tax: 20, ubi: 0, childb: 60, retrain: 1.5, formal: 70, hours: 0, natal: 30, mig: 1, housing: 40, edu: 2, health: 0.8, tele: 40 } },
-    restrict:  { name: 'Fuerte restricción', icon: 'fa-shield-halved text-rose-400', v: { accel: 0.6, subst: 40, reg: 80, tax: 40, ubi: 10, childb: 30, retrain: 0.5, formal: 40, hours: 5, natal: 20, mig: 0.6, housing: 30, edu: 1, health: 0.3, tele: 20 } },
+    dereg:     { name: 'Desregulado', icon: 'fa-bolt text-amber-400', v: { robot: 1.8, robotTax: 0, accel: 2.0, subst: 60, reg: 0, tax: 0, ubi: 0, childb: 0, retrain: 0, formal: 0, hours: 0, natal: 0, mig: 1.2, housing: 0, edu: 0, health: 0, tele: 60 } },
+    welfare:   { name: 'Estado de bienestar', icon: 'fa-hand-holding-heart text-emerald-400', v: { robot: 1, robotTax: 15, accel: 1.2, subst: 50, reg: 30, tax: 35, ubi: 30, childb: 50, retrain: 1.2, formal: 60, hours: 10, natal: 50, mig: 1, housing: 50, edu: 1.5, health: 0.5, tele: 50 } },
+    targeted:  { name: 'Inversión focalizada', icon: 'fa-bullseye text-purple-400', v: { robot: 1, robotTax: 10, accel: 1.2, subst: 50, reg: 20, tax: 20, ubi: 0, childb: 60, retrain: 1.5, formal: 70, hours: 0, natal: 30, mig: 1, housing: 40, edu: 2, health: 0.8, tele: 40 } },
+    restrict:  { name: 'Fuerte restricción', icon: 'fa-shield-halved text-rose-400', v: { robot: 0.7, robotTax: 25, accel: 0.6, subst: 40, reg: 80, tax: 40, ubi: 10, childb: 30, retrain: 0.5, formal: 40, hours: 5, natal: 20, mig: 0.6, housing: 30, edu: 1, health: 0.3, tele: 20 } },
 };
 
 
@@ -1332,7 +1365,12 @@ function simulate(T, P) {
     const K = P._k || null;                         // yearly adoption factor from the energy/compute block (1 = reference)
     let dispCum = 0, exodusCum = 0, PcPrev = null, rho0 = 0, mD0 = 1, gini0 = null, P00 = null, mDPrev = 1;
     const LS0 = (T.ls ? val(T.ls) : 50) / 100;
-    let reemp = 0, te0 = null, mEff0 = 1, LS = LS0;     // reubicados tras ser desplazados (fracción de la fuerza laboral)
+    let reemp = 0, te0 = null, mEff0 = 1, LS = LS0;
+    // Robótica: densidad relativa a la frontera (Corea, 1.220 robots por 10.000 empleados industriales, IFR 2024)
+    const ROB_FRONTIER = 1220;
+    const Mrob = ((T.manu ? val(T.manu) : 10) * 0.6 + (T.manOther ? val(T.manOther) : 15) * 0.3) / 100;   // empleo automatizable por robots
+    const robotTax = (P.robotTax || 0) / 100, robSpeed = (P.robot == null ? 1 : P.robot) * (U.robot ?? 1);
+    let Rb = (T.rob ? val(T.rob) : 100) / ROB_FRONTIER, rhoR0 = null, dispCumR = 0;     // reubicados tras ser desplazados (fracción de la fuerza laboral)
     const out = [];
 
     for (let year = 2026; year <= 2050; year++) {
@@ -1351,10 +1389,18 @@ function simulate(T, P) {
             else Anew = Math.min(Amax, A + k * (pp + qq * A / Amax) * (Amax - A));
         }
         const dA = Math.max(0, Anew - A); A = Anew;
+        // Robots: crecimiento logístico (~6 %/año en la tendencia mundial) más un impulso de la IA, que los vuelve más capaces
+        let dR = 0;
+        if (i > 0 && !P._noAI) {
+            const Rn = Math.min(1, Rb + robSpeed * (1 - 0.6 * robotTax) * (0.065 * Rb * (1 - Rb) + 0.006 * A * (1 - Rb)));
+            dR = Math.max(0, Rn - Rb); Rb = Rn;
+        }
 
         // Labor market
-        const disp = dA * E * sub * Math.max(0, 1 - 2.5 * hours);
-        const create = 0.25 * dA * E * (1 - sub);
+        const dispR = dR * Mrob * 0.7 * Math.max(0, 1 - 2.5 * hours);      // los robots sustituyen más de lo que complementan
+        dispCumR += dispR;
+        const disp = dA * E * sub * Math.max(0, 1 - 2.5 * hours) + dispR;
+        const create = 0.25 * dA * E * (1 - sub) + 0.2 * dR * Mrob;          // mantenimiento, programación, instalación
         dispCum += disp;
         if (i > 0) {
             uPrev = u;
@@ -1369,12 +1415,14 @@ function simulate(T, P) {
 
         // Income and inequality
         const eduPhase = clamp((i - 8) / 5, 0, 1);
-        const g = g0 + 0.35 * dA * E * 0.4 - 0.5 * (u - uPrev) + 0.003 * P.edu * eduPhase * uPol - 0.05 * tfin / 100;
+        const g = g0 + 0.35 * dA * E * 0.4 + 0.3 * dR * Mrob - 0.5 * (u - uPrev) + 0.003 * P.edu * eduPhase * uPol - 0.05 * tfin / 100;
         if (i > 0) m *= (1 + g);
         const mEff = m * (1 - 0.3 * hours);
         const mD = mEff * (1 - tfin / 100);                    // ingreso después del impuesto que financia las políticas
         // Renta de la IA que capta el capital (fracción del ingreso): crece con la sustitución del trabajo humano
-        const rho = 0.35 * A * E * (0.3 + 0.6 * clamp(P.subst / 100 + (U.sub ?? 0), 0, 1));
+        const rhoR = 0.5 * Rb * Mrob;                                          // renta de los robots que va al capital
+        if (rhoR0 == null) rhoR0 = rhoR;
+        const rho = 0.35 * A * E * (0.3 + 0.6 * clamp(P.subst / 100 + (U.sub ?? 0), 0, 1)) + (rhoR - rhoR0);
         if (i === 0) { rho0 = rho; te0 = te; mEff0 = mEff; }    // todo se mide desde el nivel de 2026
         // Valor del trabajo humano: participación del trabajo en el ingreso y salarios
         const penBase = u < 0.06 ? val(WAGE_PENALTY.low) : u > 0.08 ? val(WAGE_PENALTY.high) : val(WAGE_PENALTY.low) + (u - 0.06) / 0.02 * (val(WAGE_PENALTY.high) - val(WAGE_PENALTY.low));
@@ -1382,7 +1430,7 @@ function simulate(T, P) {
         LS = clamp(LS0 * (te / te0) * (1 - pen * reemp) - (rho - rho0), 0.15, 0.85);
         const wage = 100 * (mEff / mEff0) * (LS / LS0) / (te / te0);           // salario real medio por ocupado, 2026 = 100
         const wageDisp = wage * (1 - pen);                                      // salario de un despedido que consigue otro empleo
-        let sigma = C.sigma0 + 1.5 * uSig * (1 - tax) * (rho - rho0) + 0.6 * (u - C.u0) + 0.8 * pen * reemp
+        let sigma = C.sigma0 + 1.5 * uSig * ((1 - tax) * (rho - rho0 - (rhoR - rhoR0)) + (1 - robotTax) * (rhoR - rhoR0)) + 0.6 * (u - C.u0) + 0.8 * pen * reemp
                     - (inf != null ? 0.004 * (inf0 - inf) : 0) - 0.01 * P.edu * eduPhase * uPol;
         sigma = Math.max(0.2, sigma);
         const mu = Math.log(mD) - sigma * sigma / 2;
@@ -1400,7 +1448,7 @@ function simulate(T, P) {
         bc = childb * z;
         // Costo de las políticas (% del ingreso de los hogares) y límite de capacidad fiscal:
         // impuestos nuevos + endeudamiento del año no pueden superar CAP; si no alcanza, las transferencias se pagan en parte (psi < 1)
-        const revenue = 100 * tax * rho;
+        const revenue = 100 * tax * Math.max(0, rho - (rhoR - rhoR0)) + 100 * robotTax * rhoR;
         const programs = retrain + P.edu * ramp + health + 0.5 * natal;
         const transfersFull = 100 * TAKEUP * (b + bc * childShare) / mEff + 100 * 0.4 * housing * C.h / mEff;
         const interest = RATE * debt;
@@ -1471,7 +1519,7 @@ function simulate(T, P) {
             year, A, dispCum, u, us, ta, te, inf, m: mEff, sigma, gini, z, b,
             P0: pov.P0, P1: pov.P1, P2: pov.P2, Pc: povC.P0, ind, tmi, tgf, pop, exodusCum, births, deaths, migR, exodus,
             revenue, cost, costs, balance: revenue - cost, B, debt, tfin: tfinNow, psi, interest, wellbeing, tension,
-            ls: LS, wage, wageDisp, reemp, pen, migLabor,
+            ls: LS, wage, wageDisp, reemp, pen, migLabor, robDensity: Rb * ROB_FRONTIER, dispCumR, Mrob,
         });
     }
     return out;
@@ -1592,9 +1640,9 @@ const UNCERTAINTY = [
     ['fs', 'Velocidad de reinserción laboral', 'mult', 0.25], ['g', 'Crecimiento de tendencia', 'add', 0.005],
     ['sig', 'Captura de la renta de la IA por el capital', 'mult', 0.30], ['pol', 'Eficacia de las políticas', 'mult', 0.30],
     ['tgf', 'Piso de fecundidad', 'add', 0.12], ['mig', 'Saldo migratorio', 'mult', 0.30], ['tmi', 'Ritmo de baja de la mortalidad infantil', 'mult', 0.20],
-    ['accel', 'Velocidad de la IA', 'mult', 0.20], ['s0', 'Desocupación estructural (separaciones)', 'mult', 0.20],
+    ['accel', 'Velocidad de la IA', 'mult', 0.20], ['s0', 'Desocupación estructural (separaciones)', 'mult', 0.20], ['robot', 'Velocidad de la robótica', 'mult', 0.30],
 ];
-const MC_KEYS = ['u', 'P0', 'Pc', 'gini', 'pop', 'tmi', 'tgf', 'wellbeing', 'tension', 'A', 'te', 'ls', 'wage'];
+const MC_KEYS = ['u', 'P0', 'Pc', 'gini', 'pop', 'tmi', 'tgf', 'wellbeing', 'tension', 'A', 'te', 'ls', 'wage', 'robDensity', 'dispCumR'];
 function monteCarlo(T, P, n = 150, seed = 2026) {
     const rnd = mulberry32(seed);
     const normal = () => { let a = 0; while (a === 0) a = rnd(); return Math.sqrt(-2 * Math.log(a)) * Math.cos(2 * Math.PI * rnd()); };
@@ -1604,6 +1652,7 @@ function monteCarlo(T, P, n = 150, seed = 2026) {
         for (const [k, , kind, sd] of UNCERTAINTY) {
             const z = normal();
             if (k === 'accel') accel = clamp(P.accel * Math.exp(sd * z), 0.5, 2.5);
+            else if (k === 'robot') U.robot = Math.exp(sd * z);
             else U[k] = kind === 'mult' ? Math.exp(sd * z) : sd * z;
         }
         const Pd = { ...P, accel, _u: U }; Pd._k = adoptionFactor(Pd);
@@ -1628,10 +1677,10 @@ function decompose(T, P) {
     const cf = simulate(T, { ...counterfactualParams(P), _k: k });
     const noAI = simulate(T, { ...counterfactualParams(P), _k: k, _noAI: true });
     const last = 24, part = key => ({ base: scen[0][key], trend: noAI[last][key] - scen[0][key], ai: cf[last][key] - noAI[last][key], policy: scen[last][key] - cf[last][key], end: scen[last][key] });
-    return { u: part('u'), P0: part('P0'), Pc: part('Pc'), gini: part('gini'), pop: part('pop'), wellbeing: part('wellbeing'), tension: part('tension'), ls: part('ls'), wage: part('wage'), scen, cf };
+    return { u: part('u'), P0: part('P0'), Pc: part('Pc'), gini: part('gini'), pop: part('pop'), wellbeing: part('wellbeing'), tension: part('tension'), ls: part('ls'), wage: part('wage'), dispCumR: part('dispCumR'), scen, cf };
 }
 // Ranking de políticas: efecto en 2050 de un paso adicional de cada una y su costo fiscal medio 2030-2050
-const POLICY_STEPS = [['ubi', 10], ['childb', 10], ['retrain', 0.3], ['formal', 10], ['hours', 5], ['housing', 10], ['edu', 0.5], ['health', 0.2], ['natal', 10]];
+const POLICY_STEPS = [['robotTax', 10], ['ubi', 10], ['childb', 10], ['retrain', 0.3], ['formal', 10], ['hours', 5], ['housing', 10], ['edu', 0.5], ['health', 0.2], ['natal', 10]];
 function rankPolicies(T, P) {
     const k = adoptionFactor(P), base = simulate(T, { ...P, _k: k });
     const avgCost = R => { let s = 0; for (let i = 4; i < 25; i++) s += R[i].cost; return s / 21; };
@@ -1680,6 +1729,8 @@ const PRESET_RES = {
 // Qué resultados mueve cada control (medido corriendo el modelo con cada control en su mínimo y su máximo)
 const AFFECTS = {
     accel: 'adopción, empleo, valor del trabajo, pobreza, desigualdad, población, costo fiscal y recursos de la IA',
+    robot: 'robots en uso, empleo manual desplazado, desocupación, parte del ingreso para el trabajo, salarios, pobreza, desigualdad, migración y población',
+    robotTax: 'velocidad de la robótica, recaudación, desigualdad y parte del ingreso para el trabajo',
     subst: 'empleo desplazado, desocupación, parte del ingreso para el trabajo, salarios, informalidad, pobreza, desigualdad, migración y población',
     reg: 'adopción, empleo, pobreza, desigualdad, recaudación y recursos de la IA',
     tax: 'adopción, pobreza, desigualdad y recaudación',
@@ -1959,6 +2010,8 @@ function initCharts() {
         { label: 'Desocupación sin políticas %', data: [], borderColor: '#fb7185', borderDash: [5, 4], pointRadius: 0, yAxisID: 'y' },
         { label: '_lo', data: [], borderColor: 'transparent', pointRadius: 0, fill: false },
         { label: 'Rango 80 % de la desocupación', data: [], borderColor: 'transparent', backgroundColor: 'rgba(251,113,133,0.15)', pointRadius: 0, fill: '-1' },
+        { label: 'Empleo desplazado por robots %', data: [], borderColor: '#fb923c', borderDash: [2, 3], borderWidth: 2.5, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Robotización (% del país más robotizado)', data: [], borderColor: '#94a3b8', borderWidth: 1.5, pointRadius: 0, yAxisID: 'y' },
     ]}, options: bandOpts(lineOpts('%', { min: 0 })) });
 
     charts.poverty = new Chart(document.getElementById('chPoverty'), { type: 'line', data: { labels: YEARS, datasets: [
@@ -2075,7 +2128,7 @@ function update() {
         const b0 = BASEV[ex];
         const rv = RANGEV[ex] && state.year > 2026 ? `<div class="text-[10px] font-mono text-slate-500">rango 80 %: ${nf(RANGEV[ex][0], d)}–${nf(RANGEV[ex][1], d)}${unit}</div>` : '';
         const fromBase = b0 == null || v == null || state.year === 2026 ? rv : `<div class="text-[10px] font-mono text-slate-500">2026: ${nf(b0, d)}${unit} → ${state.year}: ${nf(v, d)}${unit}</div>` + rv;
-        const extra = ex === 'k_ls' ? `<div class="text-[10px] font-mono text-slate-500">salario real ${nf(r.wage, 0)} · desplazado reubicado ${nf(r.wageDisp, 0)} (2026 = 100)</div>` : ex === 'k_bal' ? `<div class="text-[10px] font-mono text-slate-500">deuda ${nf(r.debt, 0)} % · impuesto ${nf(r.tfin, 1)} %${r.psi < 0.999 ? ` · se paga ${nf(r.psi * 100, 0)} %` : ''}</div>` : '';
+        const extra = ex === 'k_ai' ? `<div class="text-[10px] font-mono text-slate-500">robots: ${nf(r.robDensity, 0)} por 10.000 trab. industriales (2026: ${nf(R[0].robDensity, 0)})</div>` : ex === 'k_ls' ? `<div class="text-[10px] font-mono text-slate-500">salario real ${nf(r.wage, 0)} · desplazado reubicado ${nf(r.wageDisp, 0)} (2026 = 100)</div>` : ex === 'k_bal' ? `<div class="text-[10px] font-mono text-slate-500">deuda ${nf(r.debt, 0)} % · impuesto ${nf(r.tfin, 1)} %${r.psi < 0.999 ? ` · se paga ${nf(r.psi * 100, 0)} %` : ''}</div>` : '';
         let delta = '';
         if (vc != null && v != null) {
             const dv = v - vc;
@@ -2096,7 +2149,7 @@ function update() {
         kp('k_pc', 'Pobreza infantil', r.Pc * 100, c.Pc * 100, '%', '#fbbf24'),
         kp('k_gini', 'Gini', r.gini, c.gini, '', '#22d3ee', true, 3),
         kp('k_tmi', 'Mort. infantil ‰', r.tmi, c.tmi, '', '#2dd4bf'),
-        kp('k_ai', 'Adopción IA', r.A * 100, c.A * 100, '%', '#a78bfa', null),
+        kp('k_ai', 'Adopción de IA y robots', r.A * 100, c.A * 100, '%', '#a78bfa', null),
         kp('k_bal', 'Balance fiscal', r.balance, null, ' %', r.balance < -3 ? '#fb7185' : '#94a3b8', false),
         popKpi(r, c, R[0]),
         kp('k_ls', 'Parte del ingreso para el trabajo', r.ls * 100, c.ls * 100, '%', '#fb923c', false),
@@ -2155,6 +2208,8 @@ function update() {
     const band = (k, which, f = 100) => MC ? MC.q[k][which].map(v => v == null ? null : v * f) : [];
     charts.adoption.data.datasets[4].data = band('u', 'p10');
     charts.adoption.data.datasets[5].data = band('u', 'p90');
+    charts.adoption.data.datasets[6].data = R.map(o => o.dispCumR * 100);
+    charts.adoption.data.datasets[7].data = R.map(o => o.robDensity / 12.2);
     charts.poverty.data.datasets[7].data = band('P0', 'p10');
     charts.poverty.data.datasets[8].data = band('P0', 'p90');
     charts.labor.data.datasets[0].data = R.map(o => o.ls * 100);
@@ -2298,7 +2353,7 @@ function buildAICalibration() {
 // ---- Calibration table ----
 function buildCalibration() {
     const cols = [['pop', 'Población'], ['tgf', 'TGF'], ['ta', 'Actividad %'], ['u', 'Desoc. %'], ['H', 'Pobreza %'], ['Hc', 'Pob. infantil %'], ['I', 'Indigencia %'],
-                  ['gini', 'Gini'], ['tmi', 'TMI ‰'], ['inf', 'Informal. %'], ['k', 'Natalidad/TGF'], ['tbm', 'TBM ‰'], ['mig', 'Migración ‰'], ['g', 'Crec. %'], ['E', 'Exposición IA'], ['lag', 'Rezago'], ['ls', 'Parte trabajo %']];
+                  ['gini', 'Gini'], ['tmi', 'TMI ‰'], ['inf', 'Informal. %'], ['k', 'Natalidad/TGF'], ['tbm', 'TBM ‰'], ['mig', 'Migración ‰'], ['g', 'Crec. %'], ['E', 'Exposición IA'], ['lag', 'Rezago'], ['ls', 'Parte trabajo %'], ['rob', 'Robots/10.000'], ['manu', 'Industria %'], ['manOther', 'Otros manuales %']];
     document.getElementById('calibHead').innerHTML = `<tr><th class="px-2 py-2">Territorio</th>${cols.map(c => `<th class="px-2 py-2 text-right">${c[1]}</th>`).join('')}</tr>`;
     const cls = { src: 'tag-src', der: 'tag-der', sup: 'tag-sup' };
     document.getElementById('calibBody').innerHTML = TERRITORIES.map(t => `<tr><td class="px-2 py-2 font-sans text-slate-200">${t.short}</td>${cols.map(([k]) => {
@@ -2311,6 +2366,10 @@ function buildCalibration() {
         ['INDEC: EPH, pobreza, distribución del ingreso y Censo 2022', 'https://www.indec.gob.ar/Nivel4/Tema/4/31/58'],
         ['INDEC: la remuneración del trabajo asalariado llegó al 46 % del valor agregado (2.º trim. 2025)', 'https://economis.com.ar/indec-los-salarios-aumentaron-60-y-mejoraron-su-peso-en-la-economia-argentina-en-2025/'],
         ['OIT: participación del trabajo en el ingreso en Europa (UE 57 %, España 59,1 %)', 'https://www.euronews.com/2024/04/19/workers-slice-of-the-gdp-pie-how-do-income-shares-compare-across-europe'],
+        ['IFR: densidad de robots 2024 (UE 231, México 62, Corea 1.220, promedio mundial 132)', 'https://ifr.org/ifr-press-releases/news/robot-density-surges-in-europe-asia-and-americas'],
+        ['IFR vía Mercado: Argentina, 25 robots por cada 10.000 empleados industriales', 'https://mercado.com.ar/tecnologia/robotica-industrial-doing-describe-la-brecha-de-automatizacion-y-los-desafios-en-argentina'],
+        ['Idelas-UCES vía La Gaceta: 2,37 M de ocupados en la industria argentina', 'https://www.lagaceta.com.ar/nota/958734/economia/como-se-distribuye-empleo.html'],
+        ['Statista / Eurostat: más de 30 M de ocupados en la industria de la UE (2025)', 'https://statista.com/statistics/1195197/employment-by-sector-in-europe'],
         ['Davis y von Wachter: el costo de perder el empleo (Brookings, 2011)', 'https://www.brookings.edu/articles/recessions-and-the-costs-of-job-loss/'],
         ['Clark y otros: desempleo y bienestar (Cambridge)', 'https://www.cambridge.org/core/product/EC0B1C0A0E5BCACE159A51A92822B80E/core-reader'],
         ['Stevenson y Wolfers: bienestar subjetivo e ingreso (Brookings)', 'https://www.brookings.edu/wp-content/uploads/2016/06/1001_subjective_wellbeing_wolfers.pdf'],
@@ -2397,14 +2456,17 @@ function renderConclusions(T, MC) {
     items.push(`<b>Empleo.</b> La desocupación pasa de ${nf(b.u * 100)} % en 2026 a <b>${nf(e.u * 100)} %</b> en 2050 (rango 80 %: ${p('u')} %); sin las políticas elegidas sería ${nf(c.u * 100)} %. ` +
         (uPk.year > 2026 && uPk.u > b.u + 0.003 ? `El punto más difícil es ${uPk.year}, con ${nf(uPk.u * 100)} %: el desplazamiento por IA llega antes que la reinserción. ` : '') +
         `En el largo plazo la IA ${Math.abs(D.u.ai) < 0.003 ? 'casi no cambia la desocupación (el empleo se reacomoda)' : `suma ${pp(D.u.ai * 100)} puntos`}; su huella duradera está en la desigualdad.`);
-    items.push(`<b>Pobreza.</b> ${e.P0 < b.P0 ? 'Baja' : 'Sube'} de ${nf(b.P0 * 100)} % a <b>${nf(e.P0 * 100)} %</b> (rango ${p('P0')} %). ${robust('P0', b.P0)} Aporte de cada factor: tendencia ${pp(D.P0.trend * 100)} pts, IA ${pp(D.P0.ai * 100)}, políticas ${pp(D.P0.policy * 100)}. ` +
+    items.push(`<b>Pobreza.</b> ${e.P0 < b.P0 ? 'Baja' : 'Sube'} de ${nf(b.P0 * 100)} % a <b>${nf(e.P0 * 100)} %</b> (rango ${p('P0')} %). ${robust('P0', b.P0)} Aporte de cada factor: tendencia ${pp(D.P0.trend * 100)} pts, IA y robots ${pp(D.P0.ai * 100)}, políticas ${pp(D.P0.policy * 100)}. ` +
         `La pobreza infantil va de ${nf(b.Pc * 100)} % a ${nf(e.Pc * 100)} % (rango ${p('Pc')} %). ${robust('Pc', b.Pc)}`);
-    items.push(`<b>Desigualdad.</b> El Gini va de ${nf(b.gini, 3)} a <b>${nf(e.gini, 3)}</b> (rango ${p('gini', 1, 3)}). ${robust('gini', b.gini)} La IA lo ${D.gini.ai >= 0 ? 'empuja' : 'baja'} ${pp(D.gini.ai, 3)} porque parte de su renta queda en el capital; las políticas lo mueven ${pp(D.gini.policy, 3)}.`);
+    items.push(`<b>Desigualdad.</b> El Gini va de ${nf(b.gini, 3)} a <b>${nf(e.gini, 3)}</b> (rango ${p('gini', 1, 3)}). ${robust('gini', b.gini)} La IA y los robots lo ${D.gini.ai >= 0 ? 'empujan' : 'bajan'} ${pp(D.gini.ai, 3)} porque parte de su renta queda en el capital; las políticas lo mueven ${pp(D.gini.policy, 3)}.`);
     items.push(`<b>Población.</b> De ${fmtPop(b.pop)} a <b>${fmtPop(e.pop)}</b> (rango ${fmtPop(q.pop.p10[L])}–${fmtPop(q.pop.p90[L])}); fecundidad de ${nf(b.tgf, 2)} a ${nf(e.tgf, 2)} hijos por mujer. ` +
         (natural ? `Desde ${natural.year} mueren más personas de las que nacen: el crecimiento depende de la migración.` : 'Los nacimientos superan a las defunciones hasta 2050.'));
+    items.push(`<b>Robótica.</b> Los robots pasan de ${nf(b.robDensity, 0)} a <b>${nf(e.robDensity, 0)}</b> por cada 10.000 trabajadores industriales (rango ${nf(q.robDensity.p10[L], 0)}–${nf(q.robDensity.p90[L], 0)}; Corea hoy: 1.220). ` +
+        `Desplazan al ${nf(e.dispCumR * 100)} % del empleo hacia 2050, sobre todo en industria, logística, agro y construcción, que en ${T.short} suman el ${nf((T.manu ? val(T.manu) : 0) + (T.manOther ? val(T.manOther) : 0), 0)} % del empleo. ` +
+        `A diferencia de la IA, que llega a las oficinas, los robots golpean el trabajo manual: pesan más donde hay más industria y agro.`);
     const sh = D.ls;
     items.push(`<b>Valor del trabajo humano.</b> La parte del ingreso que va a los trabajadores pasa de ${nf(b.ls * 100)} % a <b>${nf(e.ls * 100)} %</b> (rango ${p('ls')} %). ${robust('ls', b.ls, false)} ` +
-        `La IA le quita ${nf(-sh.ai * 100)} puntos: parte de la riqueza que antes se pagaba en salarios pasa a los dueños de la tecnología. ` +
+        `La IA y los robots le quitan ${nf(-sh.ai * 100)} puntos: parte de la riqueza que antes se pagaba en salarios pasa a los dueños de la tecnología. ` +
         `El salario real medio llega a ${nf(e.wage, 0)} (2026 = 100) porque la productividad crece, pero quien pierde el empleo por la IA y consigue otro gana ${nf(e.pen * 100, 0)} % menos (${nf(e.wageDisp, 0)}). ` +
         (e.migLabor < -0.5 ? `Ese deterioro le resta ${nf(-e.migLabor, 1)} personas por cada mil al saldo migratorio de cada año y baja algo la fecundidad.` : ''));
     items.push(`<b>Bienestar.</b> La satisfacción con la vida cambia <b>${pp(e.wellbeing, 2)}</b> puntos (escala 0–10) respecto de 2026 (rango ${p('wellbeing', 1, 2)}): ${e.wellbeing >= 0 ? 'el aumento del ingreso pesa más que el desempleo' : 'el desempleo y la caída del ingreso pesan más que el crecimiento'}.`);
@@ -2479,7 +2541,7 @@ function runConsistencyTests() {
         const EXP = [['accel', 'A', 1, 2035, 'velocidad de la IA → adopción'], ['reg', 'A', -1, 2035, 'regulación → adopción'], ['subst', 'u', 1, 2040, 'sustitución → desocupación'],
             ['ubi', 'P0', -1, 2040, 'ingreso básico → pobreza'], ['childb', 'Pc', -1, 2040, 'asignación por hijo → pobreza infantil'], ['retrain', 'u', -1, 2040, 'recalificación → desocupación'],
             ['hours', 'u', -1, 2040, 'reducción de jornada → desocupación'], ['natal', 'tgf', 1, 2045, 'natalidad → fecundidad'], ['health', 'tmi', -1, 2040, 'salud → mortalidad infantil'],
-            ['housing', 'P0', -1, 2040, 'vivienda → pobreza'], ['edu', 'P0', -1, 2050, 'educación → pobreza'], ['tax', 'revenue', 1, 2040, 'impuesto → recaudación'], ['grid', 'A', 1, 2035, 'potencia eléctrica → adopción'], ['subst', 'ls', -1, 2050, 'sustitución → parte del ingreso para el trabajo'], ['subst', 'wage', -1, 2050, 'sustitución → salario real'], ['subst', 'pop', -1, 2050, 'sustitución → población']];
+            ['housing', 'P0', -1, 2040, 'vivienda → pobreza'], ['edu', 'P0', -1, 2050, 'educación → pobreza'], ['tax', 'revenue', 1, 2040, 'impuesto → recaudación'], ['grid', 'A', 1, 2035, 'potencia eléctrica → adopción'], ['subst', 'ls', -1, 2050, 'sustitución → parte del ingreso para el trabajo'], ['subst', 'wage', -1, 2050, 'sustitución → salario real'], ['subst', 'pop', -1, 2050, 'sustitución → población'], ['robot', 'dispCumR', 1, 2040, 'robótica → empleo desplazado por robots'], ['robot', 'ls', -1, 2050, 'robótica → parte del ingreso para el trabajo'], ['robotTax', 'robDensity', -1, 2040, 'impuesto a la automatización → robots']];
         for (const [cid, key, sg, yr, name] of EXP) { const c = ALL.find(x => x.id === cid), R1 = run({ ...BASE, [cid]: c.max });
             TERRITORIES.forEach(T => { const d = R1[T.id][Y(yr)][key] - R0[T.id][Y(yr)][key]; ck(Math.sign(d) === sg && Math.abs(d) > 1e-6, `Dirección: ${name} en ${T.short} (Δ ${d.toExponential(1)})`); }); }
         // 3. rangos y saltos en escenarios guardados y extremos
