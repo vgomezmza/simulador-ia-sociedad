@@ -25,7 +25,7 @@ No es una predicción. Es un modelo de mecanismos con datos oficiales de partida
   - un ranking de políticas por pobreza evitada por punto de costo.
 - **Cierre fiscal**: las políticas se pagan con impuestos o deuda, con un tope de capacidad fiscal.
 - **Validación**: el escenario base reproduce las proyecciones demográficas oficiales (INE, GLA, JRC/Eurostat, CEPAL, Argendata/CIPPEC), y el tablero corre más de 2.800 pruebas de consistencia desde el navegador.
-- Secciones que se abren y se cierran, explicaciones detalladas en cada ⓘ, versión para celular y pantalla completa.
+- Secciones y grupos de controles que se abren y se cierran, explicaciones detalladas en cada ⓘ, versión para celular y pantalla completa.
 
 ## Cómo usarlo
 

@@ -82,6 +82,8 @@
         [data-fold].folded .wide-btn { display: none; }
         .range-btn { background: #0f172a; border-color: #334155; color: #94a3b8; }
         .range-btn.on { background: rgba(8,145,178,.25); border-color: #22d3ee; color: #cffafe; }
+        .ctl-group.folded { padding-bottom: 2px; align-self: stretch; }
+        .ctl-group-title.fold-head { justify-content: space-between; }
         .ctl-group-title { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: #94a3b8;
             padding-bottom: 6px; margin-bottom: 10px; border-bottom: 1px solid rgba(148,163,184,.15); }
         .ctl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
@@ -1100,7 +1102,7 @@ $$\text{Capex}=(\Delta GW_{nuevos}+0{,}1\,P_t)\times38$$
 
 <footer class="max-w-7xl mx-auto w-full mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="space-y-1 text-center md:text-left">
-        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v6.1 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
+        <p class="font-semibold text-slate-200">Simulador de IA y Políticas Sociales &copy; 2026–2050 · v6.2 · <a href="https://github.com/vgomezmza/simulador-ia-sociedad" class="hover:underline">código en GitHub</a></p>
         <p class="text-[11px]">Autor: <span class="text-cyan-400 font-medium">Victor Javier Gómez Saá</span> |
             <a href="mailto:vgomez40@mercurycad.com.ar" class="text-cyan-400 hover:underline">vgomez40@mercurycad.com.ar</a> |
             <a href="https://mercurycad.com.ar" class="text-cyan-400 hover:underline">mercurycad.com.ar</a></p>
@@ -1803,8 +1805,8 @@ function controlMarkup(c) {
 // Cada grupo: título de lado a lado y sus controles en una grilla pareja (las filas quedan alineadas)
 function renderGroups(boxId, groups, accent) {
     document.getElementById(boxId).innerHTML = groups.map(g => `
-        <section class="ctl-group">
-            <h3 class="ctl-group-title"><i class="fa-solid ${g.icon} mr-1 ${accent}"></i>${g.group}</h3>
+        <section class="ctl-group" data-fold="grupo-${g.group.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}">
+            <h3 class="ctl-group-title"><span><i class="fa-solid ${g.icon} mr-1 ${accent}"></i>${g.group} <span class="normal-case tracking-normal font-normal text-slate-500">· ${g.items.length} ${g.items.length === 1 ? 'control' : 'controles'}</span></span></h3>
             <div class="ctl-grid">${g.items.map(controlMarkup).join('')}</div>
         </section>`).join('');
 }
